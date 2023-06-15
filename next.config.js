@@ -1,15 +1,19 @@
 /** @type {import('next').NextConfig} */
 
 const environment = process.env.NODE_ENV
+const isProduction = environment === 'production'
+const basePath = isProduction ? '/next-app' : ''
+
 const nextConfig = {
-  assetPrefix: '/next-app',
-  basePath: '/next-app',
-  // assetPrefix: environment === 'production' ? '/next-app/' : '',
-  // basePath: environment === 'production' ? '/next-app' : '',
-  images: {
-    unoptimized: environment === 'production',
+  assetPrefix: basePath ? `${basePath}/` : '',
+  basePath: basePath,
+  env: {
+    basePath: basePath,
   },
-  output: environment === 'production' ? 'export' : 'standalone',
+  images: {
+    unoptimized: isProduction,
+  },
+  output: isProduction ? 'export' : 'standalone',
   trailingSlash: true,
 }
 
