@@ -9,6 +9,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'api.qrserver.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'alleycarvalho.github.io',
+      },
     ],
   },
   output: environment === 'production' ? 'export' : 'standalone',
