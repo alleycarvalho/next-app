@@ -3,6 +3,8 @@
 const environment = process.env.NODE_ENV
 const nextConfig = {
   images: {
+    assetPrefix: environment === 'production' ? '/next-app' : '',
+    basePath: environment === 'production' ? '/next-app' : '',
     unoptimized: environment === 'production',
     remotePatterns: [
       {
