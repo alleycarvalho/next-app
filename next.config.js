@@ -2,22 +2,13 @@
 
 const environment = process.env.NODE_ENV
 const nextConfig = {
+  assetPrefix: environment === 'production' ? '/next-app/' : '',
+  basePath: environment === 'production' ? '/next-app' : '',
   images: {
-    assetPrefix: environment === 'production' ? '/next-app' : '',
-    basePath: environment === 'production' ? '/next-app' : '',
     unoptimized: environment === 'production',
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'api.qrserver.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'alleycarvalho.github.io',
-      },
-    ],
   },
   output: environment === 'production' ? 'export' : 'standalone',
+  trailingSlash: true,
 }
 
 module.exports = nextConfig
